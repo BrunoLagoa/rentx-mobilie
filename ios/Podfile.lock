@@ -58,6 +58,10 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - lottie-ios (3.1.9)
+  - lottie-react-native (3.5.0):
+    - lottie-ios (~> 3.1.8)
+    - React
   - RCTRequired (0.63.4)
   - RCTTypeSafety (0.63.4):
     - FBLazyVector (= 0.63.4)
@@ -224,7 +228,7 @@ PODS:
     - React-cxxreact (= 0.63.4)
     - React-jsi (= 0.63.4)
   - React-jsinspector (0.63.4)
-  - react-native-safe-area-context (3.3.0):
+  - react-native-safe-area-context (3.2.0):
     - React-Core
   - React-RCTActionSheet (0.63.4):
     - React-Core/RCTActionSheetHeaders (= 0.63.4)
@@ -317,9 +321,11 @@ PODS:
     - React-RCTVibration
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNScreens (3.5.0):
+  - RNScreens (3.4.0):
     - React-Core
     - React-RCTImage
+  - RNSVG (12.1.1):
+    - React
   - UMAppLoader (2.2.0)
   - UMCore (7.1.1)
   - UMReactNativeAdapter (6.3.5):
@@ -328,6 +334,9 @@ PODS:
     - UMCore
   - UMTaskManagerInterface (6.2.0):
     - UMCore
+  - WatermelonDB (0.23.0):
+    - React
+    - React-jsi
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -348,6 +357,8 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/Libraries/FBReactNativeSpec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - lottie-ios (from `../node_modules/lottie-ios`)
+  - lottie-react-native (from `../node_modules/lottie-react-native`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
   - React (from `../node_modules/react-native/`)
@@ -374,10 +385,12 @@ DEPENDENCIES:
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - UMAppLoader (from `../node_modules/unimodules-app-loader/ios`)
   - "UMCore (from `../node_modules/@unimodules/core/ios`)"
   - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
   - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
+  - "WatermelonDB (from `../node_modules/@nozbe/watermelondb`)"
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -419,6 +432,10 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  lottie-ios:
+    :path: "../node_modules/lottie-ios"
+  lottie-react-native:
+    :path: "../node_modules/lottie-react-native"
   RCTRequired:
     :path: "../node_modules/react-native/Libraries/RCTRequired"
   RCTTypeSafety:
@@ -467,6 +484,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   UMAppLoader:
     :path: "../node_modules/unimodules-app-loader/ios"
   UMCore:
@@ -475,6 +494,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@unimodules/react-native-adapter/ios"
   UMTaskManagerInterface:
     :path: "../node_modules/unimodules-task-manager-interface/ios"
+  WatermelonDB:
+    :path: "../node_modules/@nozbe/watermelondb"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -497,6 +518,8 @@ SPEC CHECKSUMS:
   FBReactNativeSpec: f2c97f2529dd79c083355182cc158c9f98f4bd6e
   Folly: b73c3869541e86821df3c387eb0af5f65addfab4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
+  lottie-ios: 3a3758ef5a008e762faec9c9d50a39842f26d124
+  lottie-react-native: 1fb4ce21d6ad37dab8343eaff8719df76035bd93
   RCTRequired: 082f10cd3f905d6c124597fd1c14f6f2655ff65e
   RCTTypeSafety: 8c9c544ecbf20337d069e4ae7fd9a377aadf504b
   React: b0a957a2c44da4113b0c4c9853d8387f8e64e615
@@ -507,7 +530,7 @@ SPEC CHECKSUMS:
   React-jsi: a0418934cf48f25b485631deb27c64dc40fb4c31
   React-jsiexecutor: 93bd528844ad21dc07aab1c67cb10abae6df6949
   React-jsinspector: 58aef7155bc9a9683f5b60b35eccea8722a4f53a
-  react-native-safe-area-context: 61c8c484a3a9e7d1fda19f7b1794b35bbfd2262a
+  react-native-safe-area-context: f0906bf8bc9835ac9a9d3f97e8bde2a997d8da79
   React-RCTActionSheet: 89a0ca9f4a06c1f93c26067af074ccdce0f40336
   React-RCTAnimation: 1bde3ecc0c104c55df246eda516e0deb03c4e49b
   React-RCTBlob: a97d378b527740cc667e03ebfa183a75231ab0f0
@@ -520,13 +543,15 @@ SPEC CHECKSUMS:
   ReactCommon: 73d79c7039f473b76db6ff7c6b159c478acbbb3b
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
   RNReanimated: d9da990fc90123f4ffbfdda93d00fc15174863a8
-  RNScreens: 01ab149b5dd5c27f5ff26741b1d2bdf2cee1af35
+  RNScreens: 21b73c94c9117e1110a79ee0ee80c93ccefed8ce
+  RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   UMAppLoader: 21af63390e55c82e037fb9752d93114a80ecf16e
   UMCore: 2f671796d7439604a1cf8ac7bbe5809cd5c50437
   UMReactNativeAdapter: f808906d586a16cebdc3844d86e1bdb8f114a873
   UMTaskManagerInterface: 2be431101b73604e64fbfffcf759336f9d8fccbb
+  WatermelonDB: 577c61fceff16e9f9103b59d14aee4850c0307b6
   Yoga: 4bd86afe9883422a7c4028c00e34790f560923d6
 
-PODFILE CHECKSUM: 92cadfc2af87357a80c5adfad47d9aae11f06c7f
+PODFILE CHECKSUM: 0d721e40fd460d9fb2470f05130b475c386da716
 
 COCOAPODS: 1.10.2
