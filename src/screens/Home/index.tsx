@@ -3,14 +3,14 @@ import { StatusBar, StyleSheet } from 'react-native';
 import { RFValue } from 'react-native-responsive-fontsize';
 import { useNavigation } from '@react-navigation/native';
 // import { Ionicons } from '@expo/vector-icons';
-import { useTheme } from 'styled-components';
+// import { useTheme } from 'styled-components';
 
-import Animated, {
-  useSharedValue,
-  useAnimatedStyle,
-  useAnimatedGestureHandler,
-  withSpring,
-} from 'react-native-reanimated';
+// import Animated, {
+//   useSharedValue,
+//   useAnimatedStyle,
+//   useAnimatedGestureHandler,
+//   withSpring,
+// } from 'react-native-reanimated';
 // import { RectButton, PanGestureHandler } from 'react-native-gesture-handler';
 // const ButtonAnimated = Animated.createAnimatedComponent(RectButton);
 
@@ -69,18 +69,28 @@ export function Home() {
   }
 
   useEffect(() => {
+    let isMounted = true;
+
     async function fetchCars() {
       try {
         const response = await api.get('/cars');
-        setCars(response.data);
+        if (isMounted) {
+          setCars(response.data);
+        }
       } catch (error) {
         console.log(error);
       } finally {
-        setLoading(false);
+        if (isMounted) {
+          setLoading(false);
+        }
       }
     }
 
     fetchCars();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   // useEffect(() => {
