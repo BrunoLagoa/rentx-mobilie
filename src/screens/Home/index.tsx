@@ -67,7 +67,7 @@ export function Home() {
   //   },
   // });
 
-  function handleCarDetails(car: CarDTO) {
+  function handleCarDetails(car: ModelCar) {
     navigation.navigate('CarDetails', { car });
   }
 
