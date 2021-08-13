@@ -90,8 +90,8 @@ export function SchedulingDetails() {
           nextScreenRoute: 'Home',
         })
       )
-      .catch(() => {
-        Alert.alert('Não foi possível confirmar o agendamento');
+      .catch((error) => {
+        Alert.alert('Não foi possível confirmar o agendamento', error.message);
         setLoading(false);
       });
   }
