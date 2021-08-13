@@ -11,6 +11,7 @@ import { Feather } from '@expo/vector-icons';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import * as ImagePicker from 'expo-image-picker';
 import * as Yup from 'yup';
+import { useNetInfo } from '@react-native-community/netinfo';
 
 import { BackButton } from '../../components/BackButton';
 import { Input } from '../../components/Input';
@@ -46,6 +47,8 @@ export function Profile() {
   const { user, signOut, updatedUser } = useAuth();
   const [option, setOption] = useState<'dataEdit' | 'passwordEdit'>('dataEdit');
 
+  const netInfo = useNetInfo();
+
   const [avatar, setAvatar] = useState(user.avatar);
   const [name, setName] = useState(user.name);
   const [driverLicence, setDriverLicence] = useState(user.driver_license);
@@ -58,7 +61,14 @@ export function Profile() {
   }
 
   function handleOptionChange(optionSelected: 'dataEdit' | 'passwordEdit') {
-    setOption(optionSelected);
+    if (netInfo.isConnected === false && optionSelected === 'passwordEdit') {
+      Alert.alert(
+        'Você está Offline',
+        'Para mudar a senha, conecte-se a internet'
+      );
+    } else {
+      setOption(optionSelected);
+    }
   }
 
   async function handleAvatarSelect() {
