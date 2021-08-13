@@ -8,7 +8,7 @@ class Car extends Model {
   name!: string;
 
   @field('brand')
-  barnd!: string;
+  brand!: string;
 
   @field('about')
   about!: string;

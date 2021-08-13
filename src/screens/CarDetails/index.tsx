@@ -127,7 +127,7 @@ export function CarDetails() {
         </Details>
 
         <Accessories>
-          {car.accessories.map((accessory) => (
+          {car.accessories?.map((accessory) => (
             <Accessory
               key={accessory.type}
               name={accessory.name}
